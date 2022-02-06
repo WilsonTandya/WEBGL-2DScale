@@ -1,4 +1,4 @@
-// https://webglfundamentals.org/webgl/resources/webgl-lessons-ui.js
+// Source : https://webglfundamentals.org/webgl/resources/webgl-lessons-ui.js
 
 (function(root, factory) {  // eslint-disable-line
   if (typeof define === 'function' && define.amd) {
