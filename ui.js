@@ -1,4 +1,5 @@
-// Source : https://webglfundamentals.org/webgl/resources/webgl-lessons-ui.js
+// Wilson Tandya / 13519209
+// Kode modifikasi dari https://webglfundamentals.org/webgl/resources/webgl-lessons-ui.js
 
 (function(root, factory) {  // eslint-disable-line
   if (typeof define === 'function' && define.amd) {
@@ -86,71 +87,6 @@
     return "__widget_" + widgetId++;
   }
 
-  function makeCheckbox(options) {
-    const div = document.createElement("div");
-    div.className = "gman-widget-outer";
-    const label = document.createElement("label");
-    const id = getWidgetId();
-    label.setAttribute('for', id);
-    label.textContent = gopt["ui-" + options.name] || options.name;
-    label.className = "gman-checkbox-label";
-    const input = document.createElement("input");
-    input.type = "checkbox";
-    input.checked = options.value;
-    input.id = id;
-    input.className = "gman-widget-checkbox";
-    div.appendChild(label);
-    div.appendChild(input);
-    input.addEventListener('change', function(e) {
-       options.change(e, {
-         value: e.target.checked,
-       });
-    });
-
-    return {
-      elem: div,
-      updateValue: function(v) {
-        input.checked = !!v;
-      },
-    };
-  }
-
-  function makeOption(options) {
-    const div = document.createElement("div");
-    div.className = "gman-widget-outer";
-    const label = document.createElement("label");
-    const id = getWidgetId();
-    label.setAttribute('for', id);
-    label.textContent = gopt["ui-" + options.name] || options.name;
-    label.className = "gman-widget-label";
-    const selectElem = document.createElement("select");
-    options.options.forEach((name, ndx) => {
-      const opt = document.createElement("option");
-      opt.textContent = gopt["ui-" + name] || name;
-      opt.value = ndx;
-      opt.selected = ndx === options.value;
-      selectElem.appendChild(opt);
-    });
-    selectElem.className = "gman-widget-select";
-    div.appendChild(label);
-    div.appendChild(selectElem);
-    selectElem.addEventListener('change', function(e) {
-       options.change(e, {
-         value: selectElem.selectedIndex,
-       });
-    });
-
-    return {
-      elem: div,
-      updateValue: function(v) {
-        selectElem.selectedIndex = v;
-      },
-    };
-  }
-
-  function noop() {
-  }
-
   function genSlider(object, ui) {
     const changeFn = ui.change || noop;
     ui.name = ui.name || ui.key;
@@ -230,7 +166,6 @@
     updateUI: updateUI,
     setupSlider: setupSlider,
     makeSlider: makeSlider,
-    makeCheckbox: makeCheckbox,
   };
 
 }));
